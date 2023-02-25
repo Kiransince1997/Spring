@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<bean id="sim" class="com.kiran.spring.ioc.SprinIoc.Airtel"></bean>
+
+<!-- beans are generated using Setters -->
+	 <bean id="student"
+		class="com.kiran.spring.ioc.SprinSetters.Student">
+		<property name="id" value="1" />
+		<property name="studentName" value="Kiran"></property>
+	</bean>
+	<bean id="Chandru" class="com.kiran.spring.ioc.SprinSetters.Student">
+		<property name="id" value="2" />
+		<property name="StudentName" value="Chandru" />
+	</bean> 
+	
+<!-- beans are generated using constructor -->
+	<bean id="student1" class="com.kiran.spring.ioc.SprinSetters.Student">
+		<constructor-arg name="id" value="3"/>
+		<constructor-arg name="studentName" value="Manoj" />
+	</bean>
+
+<!-- Dependency injection -->
+	<bean id="mathCheatObject" class="com.kiran.spring.ioc.SpringDependecyInj.MathCheat" />
+	<bean id="scienceCheatObject" class="com.kiran.spring.ioc.SpringDependecyInj.ScienceCheat"/>
+	<bean id="stu" class="com.kiran.spring.ioc.SpringDependecyInj.Student">
+		<property name="id" value="1001"/>
+		<property name="cheat" ref="mathCheatObject" />
+	</bean>
+	<bean id="anStu" class="com.kiran.spring.ioc.SpringDependecyInj.ScienceCheat">
+		<property name="cheat" ref="scienceCheatObject"/>
+	</bean>
+</beans>
